@@ -18,11 +18,18 @@ import java.util.logging.Logger;
 public class SortableList<E> extends AbstractList<E>
         implements List<E>, RandomAccess, Cloneable, java.io.Serializable {
 
+    /**
+     * Sorts this list by the specified sorter
+     * You can write your own algorithm or use default realizations
+     * such as {@link com.reclaite.collection.sorter.QuickSorter} or {@link com.reclaite.collection.sorter.MergeSorter}
+     *
+     * @param sorter sorting algorithm object
+     */
     public void sort(ListSorter<E> sorter) {
+        // Skip sorting if it is not necessary
         if (size <= 2) {
             return;
         }
-
         try {
             sorter.sort(this);
         } catch (Exception exception) {

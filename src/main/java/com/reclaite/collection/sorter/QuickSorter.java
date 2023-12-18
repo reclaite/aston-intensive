@@ -28,7 +28,7 @@ public class QuickSorter<E> extends ListSorter<E> {
         int i = low - 1;
 
         for (int j = low; j < high; j++) {
-            if (getComparator().compare(list.get(j), pivot) < 0) {
+            if (compare(list.get(j), pivot)) {
                 i++;
                 swap(list, i, j);
             }
