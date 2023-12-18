@@ -1,3 +1,5 @@
+package collection.sorter;
+
 import com.reclaite.collection.SortableList;
 import com.reclaite.collection.sorter.MergeSorter;
 import org.junit.jupiter.api.Assertions;
@@ -26,7 +28,7 @@ public class MergeSorterTest {
         );
 
         list.sort(new MergeSorter<>(Integer::compareTo));
-        Assertions.assertIterableEquals(list, exceptedList);
+        Assertions.assertIterableEquals(exceptedList, list);
     }
 
     @Test
@@ -47,7 +49,7 @@ public class MergeSorterTest {
         );
 
         list.sort(new MergeSorter<>(Integer::compareTo));
-        Assertions.assertIterableEquals(list, exceptedList);
+        Assertions.assertIterableEquals(exceptedList, list);
     }
 
     @Test
@@ -68,6 +70,6 @@ public class MergeSorterTest {
         );
 
         list.sort(new MergeSorter<>(Comparator.comparingInt(String::length)));
-        Assertions.assertIterableEquals(list, exceptedList);
+        Assertions.assertIterableEquals(exceptedList, list);
     }
 }
