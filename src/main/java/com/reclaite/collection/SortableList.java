@@ -1,5 +1,6 @@
-package com.reclaite;
+package com.reclaite.collection;
 
+import com.reclaite.collection.sorter.ListSorter;
 import jdk.internal.access.SharedSecrets;
 import jdk.internal.util.ArraysSupport;
 
@@ -7,6 +8,8 @@ import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.function.UnaryOperator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /*
  * Copyright (c) 1997, 2019, Oracle and/or its affiliates. All rights reserved.
@@ -14,6 +17,19 @@ import java.util.function.UnaryOperator;
  */
 public class SortableList<E> extends AbstractList<E>
         implements List<E>, RandomAccess, Cloneable, java.io.Serializable {
+
+    public void sort(ListSorter<E> sorter) {
+        if (size <= 2) {
+            return;
+        }
+
+        try {
+            sorter.sort(this);
+        } catch (Exception exception) {
+            Logger.getAnonymousLogger().log(Level.SEVERE, "Caught exception while sorting list", exception);
+        }
+
+    }
 
     @java.io.Serial
     private static final long serialVersionUID = 8683452581122892190L;
