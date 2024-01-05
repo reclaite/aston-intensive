@@ -6,7 +6,8 @@ CREATE TABLE tasks (
 
 CREATE TABLE users (
     user_id SERIAL PRIMARY KEY,
-    username VARCHAR(50) NOT NULL
+    username VARCHAR(50) NOT NULL,
+    session_token VARCHAR(55) NOT NULL,
 );
 
 CREATE TABLE user_tasks (
